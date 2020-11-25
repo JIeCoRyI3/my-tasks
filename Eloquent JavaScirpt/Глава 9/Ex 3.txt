@@ -1,0 +1,12 @@
+const numbers = "5 56 454354 34534.34543 -3543 -345.435 +5 +5.34534 .5 5. -5. . 5e10 5e-10 123.213123.21321 5e.123 ";
+const regexp = /(((-|\+)?\d+(e|\.|e-)?\d+)|(\+|-)?\.?\d+\.?)/;
+let match;
+
+numbers.split(' ').map(substr => {
+     match = regexp.exec(substr);
+     if(match) { 
+          if(match[0] === match.input)  {
+               console.log(match[0]);
+          } 
+     }
+});

@@ -1,0 +1,13 @@
+function findSumOfSquares1to100() {
+     return (100 * (100 + 1) * (200 + 1)) / 6;
+}
+
+function findSquareOfSum1to100() {
+     return Math.pow( (100 * (100 + 1)) / 2, 2);
+}
+
+function findDiff() {
+     return findSquareOfSum1to100() - findSumOfSquares1to100();
+}
+
+console.log(findDiff());

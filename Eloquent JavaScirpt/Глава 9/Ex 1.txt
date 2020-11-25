@@ -1,0 +1,15 @@
+// 1.	car and cat
+// 2.	pop and prop
+// 3.	ferret, ferry, and ferrari
+// 4.	Any word ending in ious
+// 5.	A whitespace character followed by a period, comma, colon, or semicolon
+// 6.	A word longer than six letters
+// 7.	A word without the letter e (or E)
+
+const exp1 = /\bcar\b|\bcat\b/g;
+const exp2 = /\bpr?op\b/g;
+const exp3 = /ferr((et)|y|(ari))\b/g;
+const exp4 = /[a-zA-Z]+ious/g;
+const exp5 = /[,:!;.]\s/g;
+const exp6 = /\w{6,}/g;
+const exp7 = /\b[a-df-z]+\b/gi;

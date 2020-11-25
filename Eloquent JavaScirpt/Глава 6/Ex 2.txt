@@ -1,0 +1,43 @@
+class Group {
+     constructor() {
+          this.group = [];
+     }
+     
+     add(element) {
+          if(!this.has(element)) this.group.push(element);
+     }
+     
+     delete(element) {
+          if(this.has(element)) this.group.splice(this.group.findIndex(el => el === element), 1);
+     }
+     
+     has(element) {
+          return this.group.includes(element);
+     }
+     
+     static from(iterable) {
+          if(!iterable[Symbol.iterator]) throw new Error(`${iterable} is not iterable!`);
+          const set = new Group();
+          for(let element of iterable) {
+               set.add(element);
+          }
+          return set;
+     }
+}
+
+const set = new Group();
+console.log(set.group);
+set.add(3);
+set.add(4);
+set.add(3);
+set.add(2);
+console.log(set.group);
+console.log(set.has(2));
+console.log(set.has(5));
+set.delete(4);
+console.log(set.group);
+
+const array = [1, 1, 2, 3, 4, 5, 5, 5, 2];
+console.log(Group.from(array).group);
+console.log(Group.from('1231233213213').group);
+console.log(Group.from(3).group);

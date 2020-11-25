@@ -1,0 +1,11 @@
+function range(start, end, iterator = 1) {
+  const array = [];
+  while(start - end !== 0) {
+     array.push(start);
+     start += iterator;
+  }
+  array.push(start);
+  return array;
+}
+
+console.log(range(1, 10));

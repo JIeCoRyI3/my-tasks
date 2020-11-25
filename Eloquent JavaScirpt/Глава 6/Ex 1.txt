@@ -1,0 +1,29 @@
+class Vec {
+     constructor(x, y) {
+          this.x = x;
+          this.y = y;
+     }
+     
+     plus(vector) {
+          return this.#isVec(vector) || new Vec(this.x + vector.x, this.y + vector.y);
+     }
+     
+     minus(vector) {
+          return this.#isVec(vector) || new Vec(this.x - vector.x, this.y - vector.y);
+     }
+     
+     #isVec(vector) {
+          if(!(vector instanceof Vec)) return Error(`${vector} is not a Vector!`);
+     }
+     
+     get length() {
+          return Math.sqrt(this.x * this.x + this.y * this.y);
+     }
+}
+
+const vector1 = new Vec(5, 5);
+const vector2 = new Vec(3, 3);
+
+console.log(vector1.plus(23));
+console.log(vector1.minus(vector2));
+console.log(vector1.length);

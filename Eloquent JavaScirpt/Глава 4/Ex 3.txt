@@ -1,0 +1,30 @@
+function arrayToList(array, list = {}, step = 0) {
+  list.value = array[step];
+  if(array.length > step + 1) {
+    list.rest = {};
+    arrayToList(array, list.rest, step + 1);
+  }
+  return list; 
+}
+
+function listToArray(list, array = []) {
+  array.push(list.value); 
+  if(list.rest) {
+    listToArray(list.rest, array);
+  }
+  return array;
+}
+
+function nth(list, element, step = 0) {
+  if(element === step) {
+    return list;
+  } else {
+    return nth(list.rest, element, step + 1);
+  }
+}
+
+const list = arrayToList([1, 2, 3, 4])
+console.log(list);
+const array = listToArray(list);
+console.log(array);
+console.log(nth(list, 0));

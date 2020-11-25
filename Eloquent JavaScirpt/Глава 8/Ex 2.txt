@@ -1,0 +1,44 @@
+const box = {
+     locked: true,
+     unlock() { this.locked = false; },
+     lock() { this.locked = true; },
+     _content: [],
+     get content() {
+          if (this.locked) throw new Error("Locked!");
+          return this._content;
+     }
+};
+
+function withBoxUnlocked(fn) {
+     function produceFn() {
+          try {
+               const result = fn(box);
+               box.lock();
+               return result;
+          } catch(e) {
+               console.log(e);
+               box.lock();
+          }
+     }
+     
+     if(box.locked) {
+          box.unlock();
+          return produceFn();
+     } else {
+          return produceFn();
+     }
+}
+
+function test(obj) {
+     console.log(obj.content);
+     return obj.content;
+}
+
+//console.log(test(box)); //Error
+withBoxUnlocked(test);
+console.log(box.locked); //true
+box.unlock();
+console.log(box.locked); //false
+withBoxUnlocked(test);
+console.log(box.locked); //true
+withBoxUnlocked(2); //TypeError

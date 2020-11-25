@@ -1,0 +1,31 @@
+function isPrime(a) {
+     for(let i = 2; i < a / 2; i++) {
+          if(a % 2 === 0) {
+               return false;
+          }
+     }
+     
+     return true;
+}
+
+function primeFactorsFromNumber(a) {
+     const primeFactors = []; let number = a;
+     
+     for(let i = 2; i <= a / 2; i++) {
+          if(a % i === 0 && isPrime(i)) {
+               primeFactors.push(i);
+               number = number / i;
+               if(number === 1) {
+                    return primeFactors;
+               } 
+          }
+     }
+     
+     return primeFactors;
+}
+
+function largestPrimeFactorFromNumber(a) {
+     return Math.max(...primeFactorsFromNumber(a));
+}
+
+console.log(largestPrimeFactorFromNumber(600851475143));

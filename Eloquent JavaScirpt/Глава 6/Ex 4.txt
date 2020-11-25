@@ -1,0 +1,15 @@
+class HaveHasOwnProperty {
+     constructor() {
+          this.some = 'Field';
+     }
+     
+     hasOwnProperty() {
+          return 'Fuuuuuuuuu';
+     }
+}
+
+const inst = new HaveHasOwnProperty();
+
+console.log(inst.hasOwnProperty('some'));
+
+console.log(Object.hasOwnProperty.call(inst, 'some'));

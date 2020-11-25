@@ -1,0 +1,21 @@
+function reverseArray(array) {
+  let newArray = [], i = array.length - 1;
+  array.forEach((el) => {
+    newArray[i] = el;
+    i--;
+  });
+  return newArray;
+}
+
+function reverseArrayInPlace(array) {
+  for(let i = 0; i < Math.floor(array.length / 2); i++) {
+    const lastElement = array[array.length - i - 1];
+    array[array.length - i - 1] = array[i];
+    array[i] = lastElement;
+  }
+  return array;
+}
+
+let array = [1, 2, 3, 4, 5];
+
+console.log(reverseArrayInPlace(array));

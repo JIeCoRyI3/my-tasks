@@ -1,0 +1,15 @@
+function everyWithLoop(array, fn) {
+  for(let elem of array) {
+     if(!fn(elem)) return false;
+  }
+  return true;
+}
+
+function everyWithSome(array, fn) {
+  if(array.some(el => !fn(el))) return false; // Если хотя бы один элемент вернет несоответствие - то значит все не соответствуют точно и наоборот!
+  return true;
+}
+
+const array = [1, 2, 3, 4, 5];
+
+console.log(everyWithSome(array, (elem) => elem < 6));

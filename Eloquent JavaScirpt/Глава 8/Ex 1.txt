@@ -1,0 +1,22 @@
+class MultiplicatorUnitFailure extends Error {}
+
+function primitiveMultiply(a, b) {
+     if(Math.floor(Math.random() * 100 + 1) <= 20) {
+         return a * b;
+     } else {
+         throw new MultiplicatorUnitFailure;
+     }
+}
+
+function catchMultiplicatorUnitFailure(a, b) {
+     try {
+          return primitiveMultiply(a, b);
+     } catch(e) {
+          if(e instanceof MultiplicatorUnitFailure) {
+               console.log('Error: MultiplicatorUnitFailure');
+               return catchMultiplicatorUnitFailure(a, b);
+          }
+     }
+}
+
+console.log(catchMultiplicatorUnitFailure(3, 5));

@@ -1,0 +1,36 @@
+class PGroup {
+     constructor(array = []) {
+          this.group = array;
+     }
+     
+     add(element) {
+          if(!this.has(element)) {
+               const copy = [].concat(this.group);
+               copy.push(element);
+               return new PGroup(copy);
+          }
+     }
+     
+     delete(element) {
+          if(this.has(element)) {
+               const copy = [].concat(this.group); 
+               copy.splice(copy.findIndex(el => el === element), 1);
+               return new PGroup(copy);
+          }
+     }
+     
+     has(element) {
+          return this.group.includes(element);
+     }
+}
+
+PGroup.empty = new PGroup();
+
+const set1 = PGroup.empty.add(4);
+
+const set2 = set1.add(3);
+set1.add(3);
+set1.add(5);
+const set3 = set2.delete(3);
+
+console.log(set1, set2, set3);

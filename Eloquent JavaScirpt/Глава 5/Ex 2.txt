@@ -1,0 +1,8 @@
+function loop(i, fnCondition, fnReload, fnBody) {
+  while(fnCondition(i)) {
+    fnBody(i);
+    i = fnReload(i);
+  }
+}
+
+loop(0, i => i < 5, i => ++i, i => console.log(i));

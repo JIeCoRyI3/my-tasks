@@ -1,0 +1,34 @@
+function deepEqual(obj1, obj2) {
+  for(let key of Object.keys(obj1)) {
+    if(!obj2[key]) {
+      return false;
+    } else if(typeof obj1[key] === 'object' && typeof obj2[key] === 'object') {
+      if(!deepEqual(obj1[key], obj2[key])){
+        return false;
+      }
+    } else if(obj1[key] !== obj2[key]) {
+      return false;
+    } 
+  }
+  return true;
+}
+
+const obj1 = {
+  value: 1,
+  fgh: '12321',
+  gfh: {
+    dfg: 132,
+    fgh: '213'
+  }
+};
+
+const obj2 = {
+  value: 1,
+  fgh: '12321',
+  gfh: {
+    dfg: 132,
+    fgh: '213'
+  }
+};
+
+console.log(deepEqual(obj1, obj2));
